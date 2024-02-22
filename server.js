@@ -99,6 +99,17 @@ router.route('/testcollection')
     })
     .post((req, res) => {
         // Implementation here
+        const headers = req.headers;
+        const query = req.query;
+        const movieData = req.body;
+
+        res.status(200).json({
+            status: 200,
+            message: 'movie saved',
+            headers: headers,
+            query: query,
+            env: UNIQUE_KEY
+        })
     })
     .put(authJwtController.isAuthenticated, (req, res) => {
         // HTTP PUT Method
