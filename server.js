@@ -86,31 +86,32 @@ router.route('/testcollection')
     router.route('/movies')
     .get((req, res) => {
         // Implementation here
-        const headers = req.headers;
-        const query = req.query;
+        // const headers = req.headers;
+        // const query = req.query;
 
-        res.status(200).json({
-            status: 200,
-            message: 'GET movies',
-            headers: headers,
-            query: query,
-            env: UNIQUE_KEY
+        // res.status(200).json({
+        //     status: 200,
+        //     message: 'GET movies',
+        //     headers: headers,
+        //     query: query,
+        //     env: UNIQUE_KEY
+        var o = getJSONObjectForMovieRequirement(req);
+        o.status = 200;
+        o.message = 'GET movies';
+        res.json(o);
         })
-    })
+
     .post((req, res) => {
         // Implementation here
-        const headers = req.headers;
-        const query = req.query;
-        const movieData = req.body;
-
-        res.status(200).json({
-            status: 200,
-            message: 'movie saved',
-            headers: headers,
-            query: query,
-            env: UNIQUE_KEY
+        // const headers = req.headers;
+        // const query = req.query;
+        // const movieData = req.body;
+        var o = getJSONObjectForMovieRequirement(req);
+        o.status = 200;
+        o.message = 'movie saved';
+        res.json(o);
         })
-    })
+    
     .put(authJwtController.isAuthenticated, (req, res) => {
         // HTTP PUT Method
         // Requires JWT authentication.
