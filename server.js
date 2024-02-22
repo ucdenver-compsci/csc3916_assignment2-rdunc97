@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(passport.initialize());
-var UNIQUE_KEY;
+//var UNIQUE_KEY;
 var router = express.Router();
 function getJSONObjectForMovieRequirement(req) {
     var json = {
