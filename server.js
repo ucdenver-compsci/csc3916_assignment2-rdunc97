@@ -20,9 +20,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(passport.initialize());
-
+var UNIQUE_KEY;
 var router = express.Router();
-var UNIQUE_KEY = 'ryryguy';
 function getJSONObjectForMovieRequirement(req) {
     var json = {
         headers: "No headers",
