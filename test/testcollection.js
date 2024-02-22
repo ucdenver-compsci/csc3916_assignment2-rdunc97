@@ -10,8 +10,8 @@ chai.use(chaiHttp);
 
 let login_details = {
     name: 'test',
-    username: 'duncarya',
-    password: 'ryadunca'
+    username: 'email@email.com',
+    password: '123@abc'
 }
 
 describe('Register, Login and Call Test Collection with Basic Auth and JWT Auth', () => {
