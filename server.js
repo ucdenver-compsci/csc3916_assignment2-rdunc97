@@ -147,11 +147,6 @@ router.route('/testcollection')
         res.status(405).send({ message: 'HTTP method not supported.' });
     })
 
-
-
-    
-    
-    
 app.use('/', router);
 app.listen(process.env.PORT || 8080);
 module.exports = app; // for testing only
