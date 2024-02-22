@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 
 var router = express.Router();
-
+var UNIQUE_KEY = 'ryryguy';
 function getJSONObjectForMovieRequirement(req) {
     var json = {
         headers: "No headers",
@@ -83,6 +83,51 @@ router.route('/testcollection')
         res.json(o);
     }
     )
+
+    router.route('/movies')
+    .get((req, res) => {
+        // Implementation here
+        const headers = req.headers;
+        const query = req.query;
+
+        res.status(200).json({
+            status: 200,
+            message: 'GET movies',
+            headers: headers,
+            query: query,
+            env: UNIQUE_KEY
+        })
+    })
+    .post((req, res) => {
+        // Implementation here
+    })
+    .put(authJwtController.isAuthenticated, (req, res) => {
+        // HTTP PUT Method
+        // Requires JWT authentication.
+        // Returns a JSON object with status, message, headers, query, and env.
+        var o = getJSONObjectForMovieRequirement(req);
+        o.status = 200;
+        o.message = "movie updated";
+        res.json(o);
+    })
+    .delete(authController.isAuthenticated, (req, res) => {
+        // HTTP DELETE Method
+        // Requires Basic authentication.
+        // Returns a JSON object with status, message, headers, query, and env.
+        var o = getJSONObjectForMovieRequirement(req);
+        o.status = 200;
+        o.message = "movie deleted";
+        res.json(o);
+    })
+    .all((req, res) => {
+        // Any other HTTP Method
+        // Returns a message stating that the HTTP method is unsupported.
+        res.status(405).send({ message: 'HTTP method not supported.' });
+    })
+
+
+
+    
     .put(authJwtController.isAuthenticated, (req, res) => {
         console.log(req.body);
         res = res.status(200);
