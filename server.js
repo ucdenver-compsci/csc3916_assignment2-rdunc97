@@ -96,16 +96,7 @@ router.route('/testcollection')
 
     router.route('/movies')
     .get((req, res) => {
-        // Implementation here
-        // const headers = req.headers;
-        // const query = req.query;
-
-        // res.status(200).json({
-        //     status: 200,
-        //     message: 'GET movies',
-        //     headers: headers,
-        //     query: query,
-        //     env: UNIQUE_KEY
+        
         var o = getJSONObjectForMovieRequirement(req);
         o.status = 200;
         o.message = 'GET movies';
