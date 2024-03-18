@@ -105,14 +105,14 @@ router.route('/testcollection')
         res.json(o);
     })
     .put(authJwtController.isAuthenticated, (req, res) => {
-        //JWT Authentication
+        //JWT
         var o = getJSONObjectForMovieRequirement(req);
         o.status = 200;
         o.message = 'movie updated';
         res.json(o);
     })
     .delete(authController.isAuthenticated, (req, res) => {
-        //Basic Authentication
+        //basic auth
         var o = getJSONObjectForMovieRequirement(req);
         o.status = 200;
         o.message = 'movie deleted';
